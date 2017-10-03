@@ -24,6 +24,37 @@ ALPHA   Word  1       .?what does this mean? .ALPHA = 1
 BETA    Word  2       .?what does this mean? .BETA = 2
 GAMMA   Word  3       .?what does this mean? .GAMMA = 3
 
-RESULT  RESW  1       .RESERVES ONE WORD
+RESULT  RESW  1       .RESERVES ONE WORD declare variable 
         END
 </pre>
+
+<pre>.
+hw2_2   START   100
+        
+        LDA     ZERO    .load accumulator with zero             .A <--(ZERO)
+        STA     Value   .store accumulator into Value           .VALUE <--(A)
+        
+        LDA     ZERO    .load accumulator with zero             .A <-- (ZERO)
+        STA     INDEX   .store accumulator into index           .INDEX <-- (A)
+        LDX     INDEX   .?what is an x??.load x into index.     .X <-- (INDEX)
+        
+LOOP    LDA     VALUE   .load accumulator with value            .A <-- (VALUE)
+        LDX     INDEX   .?what is an x??.load x into index.     .X <--(INDEX)
+        STA     ARRAY,X 
+        
+        LDA     INDEX
+        ADD     THREE
+        STA     INDEX   
+        COMP    THUN
+        
+        JLT     LOOP
+        
+VALUE   RESW    1       .reserves word
+INDEX   RESW    1
+ZERO    WORD    0       
+THREE   WORD    3
+THUN    WORD    300     
+ARRAY   RESW    100
+        END     hw2_2
+</pre>
+
