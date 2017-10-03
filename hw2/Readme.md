@@ -42,19 +42,19 @@ LOOP    LDA     VALUE   .load accumulator with value            .A <-- (VALUE)
         LDX     INDEX   .?what is an x??.load x into index.     .X <--(INDEX)
         STA     ARRAY,X 
         
-        LDA     INDEX
-        ADD     THREE
-        STA     INDEX   
-        COMP    THUN
+        LDA     INDEX   .load accumulator with index.           .A <--(INDEX)
+        ADD     THREE   .add three to the accumulator           .A <-- (A) + 3
+        STA     INDEX   .store the accumulator into index       .INDEX <-- (A) 
+        COMP    THUN                                    .(A):(THUN, THUN+1, THUN+2) & SET CC
         
-        JLT     LOOP
+        JLT     LOOP                                    .if CC is <, then "JUMP to LOOP"
         
 VALUE   RESW    1       .reserves word
-INDEX   RESW    1
-ZERO    WORD    0       
-THREE   WORD    3
-THUN    WORD    300     
-ARRAY   RESW    100
-        END     hw2_2
+INDEX   RESW    1       .reserves word
+ZERO    WORD    0       .zero=0
+THREE   WORD    3       .Three=3
+THUN    WORD    300     .THUN = 300
+ARRAY   RESW    100     .reserves an array of 100 words
+        END     hw2_2   .end program
 </pre>
 
